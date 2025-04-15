@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getMovieReviews } from "../services/api"; // проверь путь
+import { getMovieReviews } from "../services/api"; 
 
 const MovieReviews = () => {
   const { movieId } = useParams();
