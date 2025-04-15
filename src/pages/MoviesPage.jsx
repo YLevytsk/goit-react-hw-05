@@ -1,51 +1,35 @@
-import { useEffect, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { searchMovies } from "../services/api";
 
 const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get("query") || "");
+  const queryParam = searchParams.get("query") || "";
+  const [query, setQuery] = useState(queryParam);
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    const currentQuery = searchParams.get("query");
-    if (!currentQuery) return;
+    if (!queryParam) return;
+    searchMovies(queryParam).then(setMovies).catch(console.error);
+  }, [queryParam]);
 
-    // Заглушка — здесь мог бы быть fetch
-    const mockResults = [
-      { id: 1, title: "Movie One" },
-      { id: 2, title: "Movie Two" },
-      { id: 3, title: "Another Movie" },
-    ];
-
-    const filtered = mockResults.filter(movie =>
-      movie.title.toLowerCase().includes(currentQuery.toLowerCase())
-    );
-
-    setMovies(filtered);
-  }, [searchParams]);
-
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (query.trim() === "") return;
-    setSearchParams({ query });
+    if (query.trim()) {
+      setSearchParams({ query });
+    }
   };
 
   return (
     <div>
       <h1>Search Movies</h1>
-
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={query}
-          placeholder="Enter movie title..."
-          onChange={e => setQuery(e.target.value)}
-        />
+        <input value={query} onChange={(e) => setQuery(e.target.value)} />
         <button type="submit">Search</button>
       </form>
 
       <ul>
-        {movies.map(movie => (
+        {movies.map((movie) => (
           <li key={movie.id}>
             <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
           </li>
@@ -56,3 +40,4 @@ const MoviesPage = () => {
 };
 
 export default MoviesPage;
+

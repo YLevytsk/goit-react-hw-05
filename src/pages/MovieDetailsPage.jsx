@@ -1,5 +1,6 @@
-import { useParams, Link, Outlet, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { getMovieDetails } from "../services/api"; // путь скорректируй, если файл в подкаталоге
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -7,45 +8,40 @@ const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
-    // Заглушка. Здесь мог бы быть fetch по movieId
-    setMovie({
-      id: movieId,
-      title: "Sample Movie Title",
-      overview: "This is a sample movie overview.",
-      release_date: "2024-05-01",
-    });
+    getMovieDetails(movieId)
+      .then(setMovie)
+      .catch((err) => {
+        console.error("Error loading movie details:", err);
+      });
   }, [movieId]);
 
   const handleGoBack = () => navigate(-1);
 
-  if (!movie) return <div>Loading movie details...</div>;
+  if (!movie) return <div>Loading...</div>;
 
   return (
     <div>
       <button onClick={handleGoBack}>← Go back</button>
 
       <h1>{movie.title}</h1>
-      <p><strong>Release date:</strong> {movie.release_date}</p>
+      <p><strong>Release Date:</strong> {movie.release_date}</p>
       <p><strong>Overview:</strong> {movie.overview}</p>
+      <p><strong>Genres:</strong> {movie.genres.map(g => g.name).join(", ")}</p>
 
       <hr />
 
       <h2>Additional information</h2>
       <ul>
-        <li>
-          <Link to="cast">Cast</Link>
-        </li>
-        <li>
-          <Link to="reviews">Reviews</Link>
-        </li>
+        <li><Link to="cast">Cast</Link></li>
+        <li><Link to="reviews">Reviews</Link></li>
       </ul>
 
       <hr />
 
-      {/* Вложенные маршруты */}
-      <Outlet />
+      <Outlet /> {/* Тут будут отображаться Cast и Reviews */}
     </div>
   );
 };
 
 export default MovieDetailsPage;
+
