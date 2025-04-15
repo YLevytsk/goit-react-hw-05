@@ -1,6 +1,6 @@
 import { useParams, useNavigate, Link, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getMovieDetails } from "../services/api"; // путь скорректируй, если файл в подкаталоге
+import { getMovieDetails } from "../services/api"; 
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -38,7 +38,7 @@ const MovieDetailsPage = () => {
 
       <hr />
 
-      <Outlet /> {/* Тут будут отображаться Cast и Reviews */}
+      <Outlet /> {}
     </div>
   );
 };
