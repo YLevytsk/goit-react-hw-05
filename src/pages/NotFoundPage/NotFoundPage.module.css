@@ -1,5 +1,5 @@
 .section {
-    padding: 80px 0;
+
     color: white;
 }
 
@@ -8,7 +8,7 @@
     max-width: 100%;
     margin: 0 auto;
     padding: 0 16px;
-    text-align: center;
+    position: relative;
 }
 
 @media (min-width: 1200px) {
@@ -21,44 +21,51 @@
 .title {
     font-size: 36px;
     margin-bottom: 16px;
-    text-align: center;
     color: white;
-    /* Страница не найдена — белым */
 }
 
 .text {
     font-size: 18px;
     margin-bottom: 24px;
-    text-align: center;
-    color: #ccc;
+    color: #ddd;
 }
 
 .link {
-    display: inline-block;
     font-size: 16px;
     color: #000;
     background-color: #fff;
-    /* белый фон */
     padding: 10px 20px;
-    border-radius: 12px;
+    border-radius: 6px;
     text-decoration: none;
     transition: all 0.3s;
     font-weight: 500;
+    display: inline-block;
+    margin-top: 24px;
+    margin-bottom: 24px;
 }
 
 .link:hover {
     background-color: #007bff;
-    /* голубой */
     color: #fff;
 }
 
 .banner {
     width: 100%;
     max-width: 1200px;
-    /* ширина 1200px */
-    height: auto;
+    height: 400px;
     object-fit: cover;
-    margin: 40px auto 0;
-    border-radius: 12px;
     display: block;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px 24px;
+
+    max-width: 100%;
+    text-align: center;
 }
