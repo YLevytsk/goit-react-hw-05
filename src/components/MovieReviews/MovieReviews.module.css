@@ -1,0 +1,37 @@
+.container {
+    width: 320px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1200px;
+        padding: 0;
+    }
+}
+
+.title {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+
+.reviewList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.reviewItem {
+    margin-bottom: 24px;
+    background: #fcfcfc;
+    padding: 16px;
+    border-radius: 6px;
+    color: #111;
+}
+
+.reviewItem p {
+    margin: 8px 0;
+}

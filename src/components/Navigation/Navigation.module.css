@@ -1,0 +1,49 @@
+.container {
+    width: 320px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1200px;
+        padding: 0;
+    }
+}
+
+.nav {
+    margin-top: 48px;
+    display: flex;
+    justify-content: center;
+}
+
+.navList {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    padding: 0;
+    margin-bottom: 16px;
+    justify-content: center;
+}
+
+.navItem {
+    margin: 0;
+}
+
+.navLink {
+    font-size: 28px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #fdfdfd;
+}
+
+.navLink.active {
+    color: #0056b3;
+
+}
+
+.navLink:hover {
+    color: #0056b3;
+
+}

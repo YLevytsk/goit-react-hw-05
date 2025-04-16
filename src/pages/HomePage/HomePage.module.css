@@ -1,0 +1,45 @@
+.heading {
+    color: #fdfdfd;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.banner {
+    display: block;
+    width: 100%;
+    max-height: auto;
+    object-fit: cover;
+    margin-top: 48px;
+
+}
+
+.trendingList {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px 24px;
+}
+
+.trendingItem {
+    margin: 0;
+
+}
+
+.trendingItem {
+    margin-bottom: 12px;
+}
+
+.trendingLink {
+    text-decoration: none;
+    color: #212121;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.trendingLink:hover {
+    color: #0473e9;
+
+}
