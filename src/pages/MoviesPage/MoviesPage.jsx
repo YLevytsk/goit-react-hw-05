@@ -1,7 +1,8 @@
-import { useSearchParams, Link } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { searchMovies } from "../../services/api";
 import css from "./MoviesPage.module.css";
+import MovieList from "../../components/MovieList/MovieList";
 
 const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -35,17 +36,8 @@ const MoviesPage = () => {
         </button>
       </form>
 
-      <ul className={css.movieList}>
-        {movies.map((movie) => (
-          <li key={movie.id} className={css.movieItem}>
-            <Link to={`/movies/${movie.id}`} className={css.movieLink}>
-              {movie.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <MovieList movies={movies} />
 
-      
       <img
         src="/images/banner-949944_1920.jpg"
         alt="Movies banner"
@@ -56,4 +48,5 @@ const MoviesPage = () => {
 };
 
 export default MoviesPage;
+
 

@@ -1,0 +1,37 @@
+.container {
+    width: 320px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1200px;
+        padding: 0;
+    }
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+}
+
+.item {
+    text-align: center;
+}
+
+.link {
+    text-decoration: none;
+    font-size: 18px;
+    color: #212121;
+    transition: color 0.3s;
+}
+
+.link:hover {
+    color: #007bff;
+}
