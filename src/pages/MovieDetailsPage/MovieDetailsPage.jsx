@@ -1,11 +1,12 @@
-import { useParams, useNavigate, Link, Outlet } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useParams, Link, Outlet, useLocation } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
 import { getMovieDetails } from "../../services/api";
-import css from "./MovieDetailsPage.module.css"; // ✅ импорт CSS-модуля
+import css from "./MovieDetailsPage.module.css";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
-  const navigate = useNavigate();
+  const location = useLocation();
+  const backLinkRef = useRef(location.state?.from || "/");
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
@@ -16,27 +17,36 @@ const MovieDetailsPage = () => {
       });
   }, [movieId]);
 
-  const handleGoBack = () => navigate(-1);
-
   if (!movie) return <div>Loading...</div>;
 
   return (
     <div className={css.container}>
-      <button onClick={handleGoBack} className={css.backBtn}>← Go back</button>
+      <Link to={backLinkRef.current} className={css.goBackBtn}>
+        ← Go back
+      </Link>
 
-      <h1 className={css.title}>{movie.title}</h1>
-      <p><strong>Release Date:</strong> {movie.release_date}</p>
-      <p><strong>Overview:</strong> {movie.overview}</p>
-      <p><strong>Genres:</strong> {movie.genres.map(g => g.name).join(", ")}</p>
+      <h1>{movie.title}</h1>
+      <p>
+        <strong>Release Date:</strong> {movie.release_date}
+      </p>
+      <p>
+        <strong>Overview:</strong> {movie.overview}
+      </p>
+      <p>
+        <strong>Genres:</strong> {movie.genres.map((g) => g.name).join(", ")}
+      </p>
 
       <hr />
+      <h2 className={css.additionalTitle}>Additional information</h2>
 
-      <h2 className={css.sectionTitle}>Additional information</h2>
-      <ul className={css.infoLinks}>
-        <li><Link to="cast">Cast</Link></li>
-        <li><Link to="reviews">Reviews</Link></li>
+      <ul className={css.additionalLinks}>
+        <li>
+          <Link to="cast" className={css.link}>Cast</Link>
+        </li>
+        <li>
+          <Link to="reviews" className={css.link}>Reviews</Link>
+        </li>
       </ul>
-
       <hr />
 
       <Outlet />
@@ -45,3 +55,4 @@ const MovieDetailsPage = () => {
 };
 
 export default MovieDetailsPage;
+

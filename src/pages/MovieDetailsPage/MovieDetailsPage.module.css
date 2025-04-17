@@ -15,20 +15,20 @@
 .backBtn {
     margin-bottom: 24px;
     padding: 8px 12px;
-    border: 1px solid #0056b3;
-    background-color: #fcfcfc;
+    border: 1px solid #0473e9;
+    background-color: #fdfdfd;
     cursor: pointer;
 }
 
 .title {
     font-size: 32px;
-    color: white;
+    color: #fdfdfd;
     margin-bottom: 16px;
 }
 
 .sectionTitle {
     font-size: 24px;
-    color: white;
+    color: #fdfdfd;
     margin-top: 32px;
     margin-bottom: 16px;
 }
@@ -41,15 +41,16 @@
 }
 
 .infoLinks a {
-    color: #0056b3;
+    color: #0473e9;
     text-decoration: none;
 }
 
 .infoLinks a:hover {
-    color: white;
+    color: #fdfdfd;
 }
 
-.backBtn {
+.goBackBtn {
+    text-decoration: none;
     padding: 8px 16px;
     font-size: 14px;
     font-weight: 500;
@@ -62,8 +63,33 @@
     margin-bottom: 24px;
 }
 
-.backBtn:hover,
-.backBtn:focus {
-    background-color: #0056b3;
+.goBackBtn:hover,
+.goBackBtn:focus {
+    background-color: #0473e9;
     color: #fdfdfd;
+}
+
+.additionalTitle {
+    font-size: 28px;
+    color: #fdfdfd;
+    margin-bottom: 12px;
+}
+
+.additionalLinks {
+    list-style: none;
+    display: flex;
+    gap: 16px;
+    padding-left: 0;
+    margin-bottom: 16px;
+}
+
+.link {
+    text-decoration: none;
+    color: #fdfdfd;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.link:hover {
+    color: #0473e9;
 }
